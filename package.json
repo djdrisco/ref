@@ -25,11 +25,11 @@
     , "test": "mocha -gc --reporter spec"
   }
 , "dependencies": {
-      "bindings": "*"
-    , "debug": "*"
+    "bindings": "~1.2.0",
+    "debug": "~0.8.0"
   }
 , "devDependencies": {
-      "mocha": "*"
+      "mocha": "^2.2.5"
     , "weak": "*"
     , "dox": "*"
     , "jade": "*"
