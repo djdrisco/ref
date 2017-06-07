@@ -29,17 +29,15 @@
     "docs": "node docs/compile",
     "test": "mocha -gc --reporter spec --use_strict"
   },
-  "dependencies": {
-    "bindings": "1",
-    "debug": "2",
-    "nan": "2"
+ "dependencies": {
+    "bindings": "~1.2.0",
+    "debug": "~0.8.0"
   },
-  "devDependencies": {
-    "dox": "0.4.4",
-    "highlight.js": "1",
-    "jade": "^0.35.0",
-    "marked": "^0.3.2",
-    "mocha": "*",
-    "weak": "1"
+"devDependencies": {
+      "mocha": "^2.2.5"
+    , "weak": "*"
+    , "dox": "*"
+    , "jade": "*"
   }
+, "engines": { "node": "*" }
 }
