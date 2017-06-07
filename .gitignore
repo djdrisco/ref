@@ -1,4 +1,12 @@
+npm-debug.log
+
 /build
 /node_modules
-/npm-debug.log
 /docs/index.html
+
+# ignore root-level single-letter file dev files
+?.js
+
+#IDE
+/.idea
+.kdev*

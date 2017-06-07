@@ -1,6 +1,6 @@
-
-var assert = require('assert')
 var ref = require('../')
+var assert = require('assert')
+var inspect = require('util').inspect
 
 describe('address', function () {
 
@@ -39,6 +39,14 @@ describe('address', function () {
 
   it('should have an offset of zero when none is given', function () {
     assert.equal(ref.address(buf), ref.address(buf, 0))
+  })
+
+  describe('inspect()', function () {
+
+    it('should overwrite the default Buffer#inspect() to print the memory address', function () {
+      assert(inspect(buf).indexOf(buf.hexAddress()) !== -1)
+    })
+
   })
 
 })

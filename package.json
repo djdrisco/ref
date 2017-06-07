@@ -1,34 +1,39 @@
-{ "name": "ref"
-, "description": "Turn Buffer instances into \"pointers\""
-, "keywords": [
-      "native"
-    , "buffer"
-    , "extensions"
-    , "c++"
-    , "pointer"
-    , "reference"
-    , "dereference"
-    , "type"
-    , "int"
-    , "long"
-    , "float"
-    , "double"
-    , "byte"
-    , "64"
-  ]
-, "version": "0.0.20"
-, "author": "Nathan Rajlich <nathan@tootallnate.net> (http://tootallnate.net)"
-, "repository": { "type": "git", "url": "git://github.com/TooTallNate/ref.git" }
-, "main": "./lib/ref.js"
-, "scripts": {
-      "docs": "jade docs/index.jade --obj \"{ dox: $(dox < lib/ref.js) }\""
-    , "test": "mocha -gc --reporter spec"
-  }
-, "dependencies": {
+{
+  "name": "ref",
+  "description": "Turn Buffer instances into \"pointers\"",
+  "keywords": [
+    "native",
+    "buffer",
+    "extensions",
+    "c++",
+    "pointer",
+    "reference",
+    "dereference",
+    "type",
+    "int",
+    "long",
+    "float",
+    "double",
+    "byte",
+    "64"
+  ],
+  "version": "1.3.4",
+  "license": "MIT",
+  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://tootallnate.net)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TooTallNate/ref.git"
+  },
+  "main": "./lib/ref.js",
+  "scripts": {
+    "docs": "node docs/compile",
+    "test": "mocha -gc --reporter spec --use_strict"
+  },
+ "dependencies": {
     "bindings": "~1.2.0",
     "debug": "~0.8.0"
-  }
-, "devDependencies": {
+  },
+"devDependencies": {
       "mocha": "^2.2.5"
     , "weak": "*"
     , "dox": "*"

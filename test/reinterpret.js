@@ -17,6 +17,18 @@ describe('reinterpret()', function () {
     assert.strictEqual(buf.length, reinterpreted.length)
     assert.strictEqual(buf.toString(), reinterpreted.toString())
   })
+  
+  it('should return a new Buffer instance starting at the offset address', function () {
+    var buf = new Buffer('hello world')
+    var offset = 3
+    var small = buf.slice(offset, buf.length)
+    assert.strictEqual(buf.length - offset, small.length)
+    assert.strictEqual(buf.address() + offset, small.address())
+    var reinterpreted = buf.reinterpret(small.length, offset)
+    assert.strictEqual(small.address(), reinterpreted.address())
+    assert.strictEqual(small.length, reinterpreted.length)
+    assert.strictEqual(small.toString(), reinterpreted.toString())
+  })  
 
   it('should retain a reference to the original Buffer when reinterpreted', function () {
     var origGCd = false
@@ -40,28 +52,6 @@ describe('reinterpret()', function () {
     gc()
     assert(otherGCd, '"other" has not been garbage collected')
     assert(origGCd, '"buf" has not been garbage collected')
-  })
-
-  describe('reinterpretUntilZeros()', function () {
-
-    it('should return a new Buffer instance up until the first 0', function () {
-      var buf = new Buffer('hello\0world')
-      var buf2 = buf.reinterpretUntilZeros(1)
-      assert.equal(buf2.length, 'hello'.length)
-      assert.equal(buf2.toString(), 'hello')
-    })
-
-    it('should return a new Buffer instance up until the first 2-byte sequence of 0s', function () {
-      var str = 'hello world'
-      var buf = new Buffer(50)
-      var len = buf.write(str, 'ucs2')
-      buf.writeInt16LE(0, len) // NULL terminate the string
-
-      var buf2 = buf.reinterpretUntilZeros(2)
-      assert.equal(str.length, buf2.length / 2)
-      assert.equal(buf2.toString('ucs2'), str)
-    })
-
   })
 
 })
